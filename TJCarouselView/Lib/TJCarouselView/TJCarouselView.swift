@@ -186,14 +186,10 @@ class TJCarouselView: UIView {
     }
     
     private func adjustOffset() {
-        var offsetItemIndex = 0
-        guard let count = items?.count else {
-            return
+        if let count = items?.count, count > itemCount {
+            let offsetItemIndex = itemCount / 2
+            collectionview.scrollToItem(at: IndexPath(item: offsetItemIndex, section: 0), at: self.scrollPosition, animated: false)
         }
-        if count > itemCount {
-            offsetItemIndex = itemCount / 2
-        }
-        collectionview.scrollToItem(at: IndexPath(item: offsetItemIndex, section: 0), at: self.scrollPosition, animated: false)
     }
     
     override func layoutSubviews() {

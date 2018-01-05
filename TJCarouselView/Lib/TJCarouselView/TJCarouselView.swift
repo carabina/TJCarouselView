@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-fileprivate let reuseIdentify = "reuseIdentify"
+fileprivate let pageViewIdentify = "pageViewIdentify"
 
 protocol TJCarouselViewDelegate {
     func carouselView(_ carouselView: TJCarouselView, didSelectItemAt index: Int)
@@ -34,25 +34,38 @@ class TJCarouselView: UIView {
     private var timer: Timer?
     private var pageControlContraints: [NSLayoutConstraint] = [NSLayoutConstraint]()
     private var didUpdateContraint = false
-    private var itemCount: Int = 0
+    private var numberOfPages: Int = 0 {
+        didSet {
+            if numberOfPages != oldValue {
+                needsReset = true
+            }
+            reloadData()
+        }
+    }
+    private var needsReset: Bool = false
     private var scrollPosition: UICollectionViewScrollPosition {
         return scrollDirection == .vertical ? .centeredVertically : .centeredHorizontally
     }
     
     //MARK: Public Property
-    public var items: [TJCarouselResource]? {
+    public var resourceItems: [TJCarouselResource]? {
         didSet {
-            itemCount = 0
-            if let count = items?.count, count > 1 {
-                itemCount = count * 100
-            }
-            if self.superview != nil {
-                setNeedsLayout()
-            }
+            let (needsIncreatePage, itemsCount) = (numbersOfResourceItems > 1, numbersOfResourceItems)
+            numberOfPages = needsIncreatePage ? itemsCount * 100 : itemsCount
         }
     }
     
+    private var numbersOfResourceItems: Int {
+        get {
+            guard let itemsCount = resourceItems?.count else {
+                return 0
+            }
+            return itemsCount
+        }
+    }
     public var delegate: TJCarouselViewDelegate?
+    
+    public var pageViewContentMode: UIViewContentMode = UIViewContentMode.scaleAspectFill
     
     public var onlyDisplayText: Bool = false
     
@@ -95,7 +108,7 @@ class TJCarouselView: UIView {
         collectionview.isPagingEnabled = true
         collectionview.showsVerticalScrollIndicator = false
         collectionview.showsHorizontalScrollIndicator = false
-        collectionview.register(TJCarouselPageView.self, forCellWithReuseIdentifier: reuseIdentify)
+        collectionview.register(TJCarouselPageView.self, forCellWithReuseIdentifier: pageViewIdentify)
         collectionview.delegate = self
         collectionview.dataSource = self
         self.addSubview(collectionview)
@@ -134,17 +147,18 @@ class TJCarouselView: UIView {
     
     //MARK: Public Method
     public func reloadData() {
-        stopTimer()
-        pageControl.currentPage = 0
-        if let count = items?.count {
-            pageControl.numberOfPages = count
-        }
-        pageControl.isHidden = !(itemCount > 1)
-        collectionview.reloadData()
-        //调整初始滚动距离
-        adjustOffset()
-        if isAutoScrollEnabled && itemCount > 1{
-            startTimer()
+        if needsReset {
+            needsReset = false
+            stopTimer()
+            pageControl.currentPage = 0
+            pageControl.numberOfPages = numbersOfResourceItems
+            pageControl.isHidden = !(numberOfPages > 1) || onlyDisplayText
+            collectionview.reloadData()
+            //调整初始滚动距离
+            adjustOffset()
+            if isAutoScrollEnabled && numberOfPages > 1{
+                startTimer()
+            }
         }
     }
     
@@ -167,7 +181,7 @@ class TJCarouselView: UIView {
     }
     
     private func scroll(to pageIndex: Int) {
-        let (targetIndex, animated) = pageIndex >= itemCount ? (itemCount / 2,false) : (pageIndex,true)
+        let (targetIndex, animated) = pageIndex >= numberOfPages ? (numberOfPages / 2,false) : (pageIndex,true)
         collectionview.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: self.scrollPosition, animated: animated)
     }
     
@@ -179,15 +193,12 @@ class TJCarouselView: UIView {
     }
     
     private func pageControlIndex(for index: Int) -> Int {
-        guard let count = items?.count else {
-            return 0
-        }
-        return index % count
+        return index % numbersOfResourceItems
     }
     
     private func adjustOffset() {
-        if let count = items?.count, count > itemCount {
-            let offsetItemIndex = itemCount / 2
+        if numberOfPages > numbersOfResourceItems  {
+            let offsetItemIndex = numberOfPages / 2
             collectionview.scrollToItem(at: IndexPath(item: offsetItemIndex, section: 0), at: self.scrollPosition, animated: false)
         }
     }
@@ -201,17 +212,18 @@ class TJCarouselView: UIView {
 
 extension TJCarouselView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemCount
+        return numberOfPages
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionview.dequeueReusableCell(withReuseIdentifier: reuseIdentify, for: indexPath) as! TJCarouselPageView
+        let cell = collectionview.dequeueReusableCell(withReuseIdentifier: pageViewIdentify, for: indexPath) as! TJCarouselPageView
         cell.textLabelHeight = textLabelHeight
         cell.textPadding = textPadding
         cell.onlyDisplayText = onlyDisplayText
+        cell.contentMode = pageViewContentMode
         cell.textLabel.textColor = textColor ?? UIColor.white
         let index = pageControlIndex(for: indexPath.item)
-        let item = self.items![index]
+        let item = self.resourceItems![index]
         cell.configure(item)
         return cell
     }
@@ -222,7 +234,7 @@ extension TJCarouselView: UICollectionViewDelegate {
         guard let delegate = self.delegate else {
             return
         }
-        delegate.carouselView(self, didSelectItemAt: indexPath.item)
+        delegate.carouselView(self, didSelectItemAt: self.currentIndex())
     }
 }
 

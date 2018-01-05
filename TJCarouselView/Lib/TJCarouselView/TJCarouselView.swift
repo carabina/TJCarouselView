@@ -11,7 +11,7 @@ import UIKit
 
 fileprivate let pageViewIdentify = "pageViewIdentify"
 
-protocol TJCarouselViewDelegate {
+protocol TJCarouselViewDelegate: NSObjectProtocol {
     func carouselView(_ carouselView: TJCarouselView, didSelectItemAt index: Int)
 }
 
@@ -58,7 +58,7 @@ class TJCarouselView: UIView {
             return itemsCount
         }
     }
-    public var delegate: TJCarouselViewDelegate?
+    weak public var delegate: TJCarouselViewDelegate?
     
     public var pageViewContentMode: UIViewContentMode = UIViewContentMode.scaleAspectFill
     

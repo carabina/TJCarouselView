@@ -34,15 +34,8 @@ class TJCarouselView: UIView {
     private var timer: Timer?
     private var pageControlContraints: [NSLayoutConstraint] = [NSLayoutConstraint]()
     private var didUpdateContraint = false
-    private var numberOfPages: Int = 0 {
-        didSet {
-            if numberOfPages != oldValue {
-                needsReset = true
-            }
-            reloadData()
-        }
-    }
-    private var needsReset: Bool = false
+    private var numberOfPages: Int = 0
+    private var needsAdjustOffset: Bool = false
     private var scrollPosition: UICollectionViewScrollPosition {
         return scrollDirection == .vertical ? .centeredVertically : .centeredHorizontally
     }
@@ -52,6 +45,8 @@ class TJCarouselView: UIView {
         didSet {
             let (needsIncreatePage, itemsCount) = (numbersOfResourceItems > 1, numbersOfResourceItems)
             numberOfPages = needsIncreatePage ? itemsCount * 100 : itemsCount
+            needsAdjustOffset = numberOfPages != numbersOfResourceItems
+            reloadData()
         }
     }
     
@@ -147,18 +142,17 @@ class TJCarouselView: UIView {
     
     //MARK: Public Method
     public func reloadData() {
-        if needsReset {
-            needsReset = false
-            stopTimer()
+        stopTimer()
+        pageControl.numberOfPages = numbersOfResourceItems
+        pageControl.isHidden = !(numberOfPages > 1) || onlyDisplayText
+        collectionview.reloadData()
+        if needsAdjustOffset {
+            needsAdjustOffset = false
             pageControl.currentPage = 0
-            pageControl.numberOfPages = numbersOfResourceItems
-            pageControl.isHidden = !(numberOfPages > 1) || onlyDisplayText
-            collectionview.reloadData()
-            //调整初始滚动距离
             adjustOffset()
-            if isAutoScrollEnabled && numberOfPages > 1{
-                startTimer()
-            }
+        }
+        if isAutoScrollEnabled && numberOfPages > 1{
+            startTimer()
         }
     }
     

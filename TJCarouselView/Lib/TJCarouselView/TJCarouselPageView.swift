@@ -9,16 +9,6 @@
 import UIKit
 import Kingfisher
 
-protocol PageViewProvider {
-    func createPageView() -> UICollectionViewCell
-}
-
-class TJPageViewProvider: PageViewProvider {
-    func createPageView() -> UICollectionViewCell {
-        return TJCarouselPageView()
-    }
-}
-
 class TJCarouselPageView: UICollectionViewCell {
     
     public let imageView: UIImageView = UIImageView()

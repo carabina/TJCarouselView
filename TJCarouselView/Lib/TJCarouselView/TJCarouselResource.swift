@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-protocol TJCarouselResource {
+public protocol TJCarouselResource {
     var image: UIImage? { get }
     var imageURL: String? { get }
     var attributeText: AttributedStringConvertible? { get }
 }
 
-protocol AttributedStringConvertible {
+public protocol AttributedStringConvertible {
     func asAttributeString() -> NSAttributedString
 }
 

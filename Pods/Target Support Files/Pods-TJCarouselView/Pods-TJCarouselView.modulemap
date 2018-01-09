@@ -1,0 +1,6 @@
+framework module Pods_TJCarouselView {
+  umbrella header "Pods-TJCarouselView-umbrella.h"
+
+  export *
+  module * { export * }
+}

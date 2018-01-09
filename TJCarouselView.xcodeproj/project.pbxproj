@@ -18,6 +18,7 @@
 		C44E8DCB1FF0E759000B29C2 /* TJCarouselViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8DCA1FF0E759000B29C2 /* TJCarouselViewUITests.swift */; };
 		C44E8DDB1FF0E795000B29C2 /* TJCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8DDA1FF0E795000B29C2 /* TJCarouselView.swift */; };
 		C44E8DDD1FF0E7A6000B29C2 /* TJCarouselPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8DDC1FF0E7A6000B29C2 /* TJCarouselPageView.swift */; };
+		DE0505A7A7D1A452D88FE83A /* Pods_TJCarouselView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCA124E7467ECBEE71D0056 /* Pods_TJCarouselView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		542A00CF50BA274B466EDCCF /* Pods-TJCarouselView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJCarouselView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TJCarouselView/Pods-TJCarouselView.debug.xcconfig"; sourceTree = "<group>"; };
 		7C21EEED1FF1293E000A0A8F /* TJCarouselResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJCarouselResource.swift; sourceTree = "<group>"; };
+		9BCA124E7467ECBEE71D0056 /* Pods_TJCarouselView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TJCarouselView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44C46BC1FFDD70C00350DD6 /* CarouselContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselContainerCell.swift; sourceTree = "<group>"; };
 		C44E8DA71FF0E758000B29C2 /* TJCarouselView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TJCarouselView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44E8DAA1FF0E758000B29C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		C44E8DCC1FF0E759000B29C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44E8DDA1FF0E795000B29C2 /* TJCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJCarouselView.swift; sourceTree = "<group>"; };
 		C44E8DDC1FF0E7A6000B29C2 /* TJCarouselPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJCarouselPageView.swift; sourceTree = "<group>"; };
+		EACA9F47A368C1DC3C2A3892 /* Pods-TJCarouselView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJCarouselView.release.xcconfig"; path = "Pods/Target Support Files/Pods-TJCarouselView/Pods-TJCarouselView.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE0505A7A7D1A452D88FE83A /* Pods_TJCarouselView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1951CFCBD8EF2F62864065BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				542A00CF50BA274B466EDCCF /* Pods-TJCarouselView.debug.xcconfig */,
+				EACA9F47A368C1DC3C2A3892 /* Pods-TJCarouselView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD98F309315A70B0DE83CF0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BCA124E7467ECBEE71D0056 /* Pods_TJCarouselView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C44E8D9E1FF0E758000B29C2 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +111,8 @@
 				C44E8DBE1FF0E759000B29C2 /* TJCarouselViewTests */,
 				C44E8DC91FF0E759000B29C2 /* TJCarouselViewUITests */,
 				C44E8DA81FF0E758000B29C2 /* Products */,
+				1951CFCBD8EF2F62864065BF /* Pods */,
+				AD98F309315A70B0DE83CF0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C44E8DCF1FF0E759000B29C2 /* Build configuration list for PBXNativeTarget "TJCarouselView" */;
 			buildPhases = (
+				9FF33DFEB24CA7D238BFE56B /* [CP] Check Pods Manifest.lock */,
 				C44E8DA31FF0E758000B29C2 /* Sources */,
 				C44E8DA41FF0E758000B29C2 /* Frameworks */,
 				C44E8DA51FF0E758000B29C2 /* Resources */,
+				52FB91CAD67008E39E8CA251 /* [CP] Embed Pods Frameworks */,
+				2B0FC6FB1636A9E4BDD94C87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,6 +308,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B0FC6FB1636A9E4BDD94C87 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TJCarouselView/Pods-TJCarouselView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52FB91CAD67008E39E8CA251 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TJCarouselView/Pods-TJCarouselView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TJCarouselView/Pods-TJCarouselView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FF33DFEB24CA7D238BFE56B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TJCarouselView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C44E8DA31FF0E758000B29C2 /* Sources */ = {
@@ -456,13 +537,11 @@
 		};
 		C44E8DD01FF0E759000B29C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 542A00CF50BA274B466EDCCF /* Pods-TJCarouselView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TJCarouselView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,13 +554,11 @@
 		};
 		C44E8DD11FF0E759000B29C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EACA9F47A368C1DC3C2A3892 /* Pods-TJCarouselView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TJCarouselView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

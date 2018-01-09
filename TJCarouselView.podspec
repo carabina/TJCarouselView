@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0"
   s.summary      = "a carousel view written in swift"
 
-  s.homepage     = "http://github.com/extie/TJCarouselView"
+  s.homepage     = "https://github.com/extie/TJCarouselView"
 
   s.license      = "MIT"
 
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "http://github.com/extie/TJCarouselView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/extie/TJCarouselView.git", :tag => "#{s.version}" }
 
 
   s.source_files  = "TJCarouselView/Lib/TJCarouselView/**/*.{h,m}"

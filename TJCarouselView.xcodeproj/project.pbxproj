@@ -18,8 +18,6 @@
 		C44E8DCB1FF0E759000B29C2 /* TJCarouselViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8DCA1FF0E759000B29C2 /* TJCarouselViewUITests.swift */; };
 		C44E8DDB1FF0E795000B29C2 /* TJCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8DDA1FF0E795000B29C2 /* TJCarouselView.swift */; };
 		C44E8DDD1FF0E7A6000B29C2 /* TJCarouselPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E8DDC1FF0E7A6000B29C2 /* TJCarouselPageView.swift */; };
-		C44E8DE21FF0E993000B29C2 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C44E8DE11FF0E993000B29C2 /* Kingfisher.framework */; };
-		C44E8DE31FF0E993000B29C2 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C44E8DE11FF0E993000B29C2 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,20 +37,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C44E8DE41FF0E993000B29C2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C44E8DE31FF0E993000B29C2 /* Kingfisher.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		7C21EEED1FF1293E000A0A8F /* TJCarouselResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJCarouselResource.swift; sourceTree = "<group>"; };
 		C44C46BC1FFDD70C00350DD6 /* CarouselContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselContainerCell.swift; sourceTree = "<group>"; };
@@ -71,7 +55,6 @@
 		C44E8DCC1FF0E759000B29C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44E8DDA1FF0E795000B29C2 /* TJCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJCarouselView.swift; sourceTree = "<group>"; };
 		C44E8DDC1FF0E7A6000B29C2 /* TJCarouselPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJCarouselPageView.swift; sourceTree = "<group>"; };
-		C44E8DE11FF0E993000B29C2 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C44E8DE21FF0E993000B29C2 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +85,6 @@
 		C44E8D9E1FF0E758000B29C2 = {
 			isa = PBXGroup;
 			children = (
-				C44E8DE11FF0E993000B29C2 /* Kingfisher.framework */,
 				C44E8DA91FF0E758000B29C2 /* TJCarouselView */,
 				C44E8DBE1FF0E759000B29C2 /* TJCarouselViewTests */,
 				C44E8DC91FF0E759000B29C2 /* TJCarouselViewUITests */,
@@ -182,8 +163,6 @@
 				C44E8DA31FF0E758000B29C2 /* Sources */,
 				C44E8DA41FF0E758000B29C2 /* Frameworks */,
 				C44E8DA51FF0E758000B29C2 /* Resources */,
-				C44E8DE01FF0E8B7000B29C2 /* ShellScript */,
-				C44E8DE41FF0E993000B29C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,23 +281,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		C44E8DE01FF0E8B7000B29C2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C44E8DA31FF0E758000B29C2 /* Sources */ = {

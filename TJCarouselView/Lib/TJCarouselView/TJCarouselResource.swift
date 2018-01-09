@@ -20,13 +20,13 @@ public protocol AttributedStringConvertible {
 }
 
 extension String: AttributedStringConvertible {
-    func asAttributeString() -> NSAttributedString {
+    public func asAttributeString() -> NSAttributedString {
         return NSAttributedString(string: self)
     }
 }
 
 extension NSAttributedString: AttributedStringConvertible {
-    func asAttributeString() -> NSAttributedString {
+    public func asAttributeString() -> NSAttributedString {
         return self
     }
 }

@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.license      = "MIT"
 
-  s.author       = { "tianjian" => "tianjian0918@gmail.com" }
+  s.author       = { "extie" => "tianjian0918@gmail.com" }
 
   s.platform     = :ios
   s.platform     = :ios, "8.0"
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/extie/TJCarouselView.git", :tag => "#{s.version}" }
 
 
-  s.source_files  = "TJCarouselView/Lib/TJCarouselView/**/*.{h,m}"
+  s.source_files  = "TJCarouselView/Lib/TJCarouselView/**/*.swift"
 
   s.requires_arc = true
 

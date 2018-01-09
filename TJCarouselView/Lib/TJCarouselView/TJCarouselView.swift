@@ -11,21 +11,21 @@ import UIKit
 
 fileprivate let pageViewIdentify = "pageViewIdentify"
 
-protocol TJCarouselViewDelegate: NSObjectProtocol {
+public protocol TJCarouselViewDelegate: NSObjectProtocol {
     func carouselView(_ carouselView: TJCarouselView, didSelectItemAt index: Int)
 }
 
-enum TJCarouselViewScrollDirection: Int {
+public enum TJCarouselViewScrollDirection: Int {
     case vertical
     case horizontal
 }
 
-enum TJCarouselViewPageControlAlignment: Int {
+public enum TJCarouselViewPageControlAlignment: Int {
     case center
     case right
 }
 
-class TJCarouselView: UIView {
+public class TJCarouselView: UIView {
     
     //MRAK: Private Property
     private var collectionview: UICollectionView!
@@ -115,7 +115,7 @@ class TJCarouselView: UIView {
         setupConstraint()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -197,7 +197,7 @@ class TJCarouselView: UIView {
         }
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         flowLayout.itemSize = self.bounds.size
         reloadData()
@@ -205,11 +205,11 @@ class TJCarouselView: UIView {
 }
 
 extension TJCarouselView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfPages
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: pageViewIdentify, for: indexPath) as! TJCarouselPageView
         cell.textLabelHeight = textLabelHeight
         cell.textPadding = textPadding
@@ -224,7 +224,7 @@ extension TJCarouselView: UICollectionViewDataSource {
 }
 
 extension TJCarouselView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let delegate = self.delegate else {
             return
         }
@@ -233,19 +233,19 @@ extension TJCarouselView: UICollectionViewDelegate {
 }
 
 extension TJCarouselView: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if isAutoScrollEnabled {
             stopTimer()
         }
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if isAutoScrollEnabled {
             startTimer()
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = pageControlIndex(for: currentIndex())
         self.pageControl.currentPage = index
     }
